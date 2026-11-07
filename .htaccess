@@ -1,0 +1,14 @@
+# Digital Ventures: force HTTPS and www
+RewriteEngine On
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteRule ^ https://www.thedigitalventures.com%{REQUEST_URI} [L,R=301]
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/webp "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType text/css "access plus 7 days"
+</IfModule>
+AddType image/webp .webp
+AddType image/svg+xml .svg
